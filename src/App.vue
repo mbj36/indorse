@@ -1,17 +1,19 @@
 <template>
-    <div id="app">
-        <landing/>
-        <router-view></router-view>
-    </div>
+    <v-app>
+        <Header/>
+        <div id="app">
+            <router-view></router-view>
+        </div>
+    </v-app>
 </template>
 
 <script>
-    import Landing from './components/Landing';
+    import Header from './components/Header';
 
     export default {
       name: 'app',
       components: {
-        Landing
+        Header
       }
     };
 </script>
@@ -21,7 +23,6 @@
       font-family: 'Avenir', Helvetica, Arial, sans-serif;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
-      text-align: center;
       color: #2c3e50;
     }
 </style>

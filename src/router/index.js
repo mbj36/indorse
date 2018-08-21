@@ -1,23 +1,31 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Landing from '../components/Landing'
 import Trending from '../components/Trending'
 import Popular from '../components/Popular'
+import Home from '../components/Home'
+import Movie from '../components/Movie'
 
 Vue.use(VueRouter)
 
 const routes = [
     {
         path: '/',
-        component: Landing
+        component: Home
     },
     {
-        path: '/trending',
-        component: Trending
+        path: '/movies/trending',
+        component: Trending,
+        name: 'trending'
     },
     {
-        path: '/popular',
-        component: Popular
+        path: '/movies/popular',
+        component: Popular,
+        name: 'popular'
+    },
+    {
+        path: '/movies/:id',
+        component: Movie,
+        name: 'movie'
     }
 ]
 
