@@ -2,7 +2,11 @@
     <div id="trending">
         <span v-for="movie in popular" :key="movie.id">
             <router-link :to="{ name: 'movie', params: { id: movie.id }}">
+
                 <img class="trending_image" height="300px" width="350px" :src="'https://image.tmdb.org/t/p/w400_and_h600_bestv2/' + movie.poster_path" />
+                <div>
+                    <span class="title">{{movie.original_title}}</span>
+                </div>
             </router-link>
         </span>
     </div>
@@ -34,7 +38,7 @@
       display: flex;
       flex-wrap: wrap;
       flex-direction: row;
-      padding: 10px;
+      margin: 1%;
     }
     .trending_image {
       transform: scale(1);
@@ -43,5 +47,11 @@
     .trending_image:hover {
       transform: scale(0.97) translateZ(0);
       transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .title {
+      text-align: center;
+      position: relative;
+      padding: 20px;
+      margin: 1%;
     }
 </style>

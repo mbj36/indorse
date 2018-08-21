@@ -23,7 +23,7 @@ const routes = [
         name: 'popular'
     },
     {
-        path: '/movies/:id',
+        path: '/movie/:id',
         component: Movie,
         name: 'movie'
     }

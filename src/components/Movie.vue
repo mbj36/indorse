@@ -1,11 +1,16 @@
 <template>
-    <div>
-        <p>{{$route.params.id}}</p>
+    <div id="movie">
+        <img :src="'https://image.tmdb.org/t/p/w400_and_h600_bestv2/' + movieDetail.poster_path" />"
     </div>
 </template>
 
 <script>
     export default {
+      data() {
+        return {
+          movieDetail: []
+        };
+      },
       mounted() {
         this.$http
           .get(
@@ -15,7 +20,14 @@
           )
           .then(res => {
             console.log(res);
+            this.movieDetail = res.data;
           });
       }
     };
 </script>
+
+<style>
+    #movie {
+      margin: 5%;
+    }
+</style>
