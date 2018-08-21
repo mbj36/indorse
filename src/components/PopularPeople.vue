@@ -1,16 +1,16 @@
 <template>
     <div>
-        <h2 class="title">Popular Movies</h2>
+        <h2 class="title">Popular People</h2>
         <span class="spinner" v-if="isLoading">
             <v-progress-circular indeterminate color="purple"></v-progress-circular>
         </span>
         <div id="trending">
-            <span v-for="(movie, index) in popular" v-show="index < (count ? count: popular.length) " :key="movie.id">
-                <router-link :to="{ name: 'movie', params: { id: movie.id }}">
+            <span v-for="(people, index) in popular" v-show="index < (count ? count: popular.length) " :key="people.id">
+                <router-link :to="{ name: 'people', params: { id: people.id }}">
 
-                    <img class="trending_image" height="300px" width="350px" :src="'https://image.tmdb.org/t/p/w400_and_h600_bestv2/' + movie.poster_path" />
+                    <img class="trending_image" height="300px" width="350px" :src="'https://image.tmdb.org/t/p/w400_and_h600_bestv2/' + people.profile_path" />
                     <div>
-                        <span class="title">{{movie.original_title}}</span>
+                        <span class="title">{{people.original_title}}</span>
                     </div>
                 </router-link>
             </span>
@@ -34,7 +34,7 @@
       mounted() {
         this.$http
           .get(
-            'https://api.themoviedb.org/3/movie/popular?api_key=a702970c58dc70036d195f326f3f4c77'
+            'https://api.themoviedb.org/3/person/popular?api_key=a702970c58dc70036d195f326f3f4c77'
           )
           .then(res => {
             this.popular = res.data.results;

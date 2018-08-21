@@ -1,5 +1,5 @@
 <template>
-    <v-toolbar color="cyan lighten-3">
+    <v-toolbar dense color="cyan lighten-3">
         <v-toolbar-side-icon></v-toolbar-side-icon>
 
         <v-toolbar-title>
@@ -8,6 +8,12 @@
 
         <v-spacer></v-spacer>
         <v-toolbar-items class="hidden-sm-and-down">
+            <v-btn flat>
+                <router-link to="/">Home</router-link>
+            </v-btn>
+            <v-btn flat>
+                <router-link to="/people/popular">People</router-link>
+            </v-btn>
             <v-btn flat>
                 <router-link active-class="active" to="/movies/trending"> Trending </router-link>
             </v-btn>

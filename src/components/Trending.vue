@@ -1,14 +1,20 @@
 <template>
-    <div id="trending">
-        <span v-for="movie in popular" :key="movie.id">
-            <router-link :to="{ name: 'movie', params: { id: movie.id }}">
-
-                <img class="trending_image" height="300px" width="350px" :src="'https://image.tmdb.org/t/p/w400_and_h600_bestv2/' + movie.poster_path" />
-                <div>
-                    <span class="title">{{movie.original_title}}</span>
-                </div>
-            </router-link>
+    <div>
+        <h2 class="title">Trending Movies</h2>
+        <span class="spinner" v-if="isLoading">
+            <v-progress-circular indeterminate color="purple"></v-progress-circular>
         </span>
+        <div id="trending">
+            <span v-for="(movie, index) in popular" :key="movie.id" v-show="index < (count ? count: popular.length) ">
+                <router-link :to="{ name: 'movie', params: { id: movie.id }}">
+
+                    <img class="trending_image" height="300px" width="350px" :src="'https://image.tmdb.org/t/p/w400_and_h600_bestv2/' + movie.poster_path" />
+                    <div>
+                        <span class="title">{{movie.original_title}}</span>
+                    </div>
+                </router-link>
+            </span>
+        </div>
     </div>
 </template>
 
@@ -17,8 +23,13 @@
       data() {
         return {
           popular: [],
-          posterPath: ''
+          isLoading: true
         };
+      },
+      props: {
+        count: {
+          type: Number
+        }
       },
       mounted() {
         this.$http
@@ -27,7 +38,7 @@
           )
           .then(res => {
             this.popular = res.data.results;
-            console.log(res);
+            this.isLoading = false;
           });
       }
     };

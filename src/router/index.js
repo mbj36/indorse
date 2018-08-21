@@ -4,6 +4,9 @@ import Trending from '../components/Trending'
 import Popular from '../components/Popular'
 import Home from '../components/Home'
 import Movie from '../components/Movie'
+import TopRated from '../components/TopRated'
+import PopularPeople from '../components/PopularPeople'
+import People from '../components/People'
 
 Vue.use(VueRouter)
 
@@ -23,10 +26,25 @@ const routes = [
         name: 'popular'
     },
     {
+        path: '/movies/top_rated',
+        component: TopRated,
+        name: 'top_rated'
+    },
+    {
         path: '/movie/:id',
         component: Movie,
         name: 'movie'
-    }
+    },
+    {
+        path: '/people/popular',
+        component: PopularPeople,
+        name: 'popularpeople'
+    },
+    {
+        path: '/people/:id',
+        component: People,
+        name: 'people'
+    },
 ]
 
 const router = new VueRouter({

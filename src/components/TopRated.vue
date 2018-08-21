@@ -1,11 +1,8 @@
 <template>
     <div>
-        <h2 class="title">Popular Movies</h2>
-        <span class="spinner" v-if="isLoading">
-            <v-progress-circular indeterminate color="purple"></v-progress-circular>
-        </span>
+        <h2 class="title">Top rated Movies</h2>
         <div id="trending">
-            <span v-for="(movie, index) in popular" v-show="index < (count ? count: popular.length) " :key="movie.id">
+            <span v-for="(movie, index) in popular" :key="movie.id" v-show="index < (count ? count: popular.length)">
                 <router-link :to="{ name: 'movie', params: { id: movie.id }}">
 
                     <img class="trending_image" height="300px" width="350px" :src="'https://image.tmdb.org/t/p/w400_and_h600_bestv2/' + movie.poster_path" />
@@ -23,7 +20,7 @@
       data() {
         return {
           popular: [],
-          isLoading: true
+          posterPath: ''
         };
       },
       props: {
@@ -34,11 +31,10 @@
       mounted() {
         this.$http
           .get(
-            'https://api.themoviedb.org/3/movie/popular?api_key=a702970c58dc70036d195f326f3f4c77'
+            'https://api.themoviedb.org/3/movie/top_rated?api_key=a702970c58dc70036d195f326f3f4c77'
           )
           .then(res => {
             this.popular = res.data.results;
-            this.isLoading = false;
           });
       }
     };
