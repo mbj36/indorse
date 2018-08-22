@@ -37,7 +37,7 @@
             }?api_key=a702970c58dc70036d195f326f3f4c77`
           )
           .then(res => {
-            this.peopleDetail = res.data;
+            this.peopleDetail = res.data; // Store the person detail
             this.isLoading = false;
           });
       }

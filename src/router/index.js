@@ -7,6 +7,7 @@ import Movie from '../components/Movie'
 import TopRated from '../components/TopRated'
 import PopularPeople from '../components/PopularPeople'
 import People from '../components/People'
+import Search from '../components/Search'
 
 Vue.use(VueRouter) // Using Vue router 
 
@@ -47,6 +48,11 @@ const routes = [
         component: People,
         name: 'people'
     },
+    {
+        path: '/search/:query',
+        component: Search,
+        name: 'search'
+    }
 ]
 
 

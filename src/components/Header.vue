@@ -9,6 +9,7 @@
 
         <v-spacer></v-spacer>
         <v-toolbar-items class="hidden-sm-and-down">
+            <v-text-field solo v-model="search" class="search" @keypress.enter="searchQuery" label="Search Movie by title and press enter"></v-text-field>
             <v-btn flat>
                 <router-link class="white--text" to="/">Home</router-link>
             </v-btn>
@@ -25,11 +26,31 @@
     </v-toolbar>
 </template>
 
+<script>
+    export default {
+      data() {
+        return {
+          search: '',
+          searchResults: []
+        };
+      },
+      methods: {
+        searchQuery() {
+          this.$router.push(`/search/${this.search}`);
+          this.search = '';
+        }
+      }
+    };
+</script>
+
 
 <style>
     a {
       text-decoration: none;
       color: inherit;
+    }
+    .search {
+      width: 400px;
     }
 </style>
 
