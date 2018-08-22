@@ -26,3 +26,4 @@ npm run serve
 - Vue Router ( for navigation )
 - Vuex (Just basic setup, although didn't required in app)
 - Vuetify (Material CSS component for styling)
+- Axios 
