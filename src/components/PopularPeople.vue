@@ -10,7 +10,7 @@
 
                     <img class="trending_image" height="300px" width="350px" :src="'https://image.tmdb.org/t/p/w400_and_h600_bestv2/' + people.profile_path" />
                     <div>
-                        <span class="title">{{people.original_title}}</span>
+                        <span class="title">{{people.name}}</span>
                     </div>
                 </router-link>
             </span>

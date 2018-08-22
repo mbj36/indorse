@@ -2,6 +2,7 @@
     <v-app>
         <Header/>
         <div id="app">
+            <!-- for navigating between screens -->
             <router-view></router-view>
         </div>
     </v-app>
@@ -13,7 +14,7 @@
     export default {
       name: 'app',
       components: {
-        Header
+        Header //registering the components
       }
     };
 </script>

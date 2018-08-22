@@ -8,7 +8,9 @@ import TopRated from '../components/TopRated'
 import PopularPeople from '../components/PopularPeople'
 import People from '../components/People'
 
-Vue.use(VueRouter)
+Vue.use(VueRouter) // Using Vue router 
+
+// Defining the routes for our app to be used across the app
 
 const routes = [
     {
@@ -47,10 +49,11 @@ const routes = [
     },
 ]
 
+
 const router = new VueRouter({
     mode: 'history',
     routes
 })
 
 
-export default router
+export default router // to use the router variable 

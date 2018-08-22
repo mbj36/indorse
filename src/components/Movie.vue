@@ -1,5 +1,8 @@
 <template>
     <div id="movie">
+        <span class="spinner" v-if="isLoading">
+            <v-progress-circular indeterminate color="purple"></v-progress-circular>
+        </span>
         <v-layout row wrap>
             <v-flex sm4>
                 <img :src="'https://image.tmdb.org/t/p/w400_and_h600_bestv2/' + movieDetail.poster_path" />
@@ -26,7 +29,8 @@
     export default {
       data() {
         return {
-          movieDetail: []
+          movieDetail: [], // to store the detail of a particular movie
+          isLoading: true
         };
       },
       mounted() {
@@ -37,8 +41,8 @@
             }?api_key=a702970c58dc70036d195f326f3f4c77`
           )
           .then(res => {
-            console.log(res);
             this.movieDetail = res.data;
+            this.isLoading = false; // Loading indicator
           });
       },
       methods: {

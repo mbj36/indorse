@@ -37,7 +37,6 @@
             }?api_key=a702970c58dc70036d195f326f3f4c77`
           )
           .then(res => {
-            console.log(res);
             this.peopleDetail = res.data;
             this.isLoading = false;
           });

@@ -27,6 +27,7 @@
     import Trending from '../components/Trending';
     export default {
       components: {
+        // Registering the components
         Popular,
         TopRated,
         Trending
