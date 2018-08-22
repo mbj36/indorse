@@ -1,4 +1,4 @@
-# indorse
+# indorse 
 
 ## Project setup
 ```
@@ -10,12 +10,19 @@ npm install
 npm run serve
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## Features
 
-### Lints and fixes files
-```
-npm run lint
-```
+- [x] Trending Movies
+- [x] Popular Movies
+- [x] Top Rated Movies
+- [x] Search Movies by title
+- [x] Details of Movie
+- [x] List of actor/actress
+- [x] Details of actor/actress
+
+## Tech stack
+
+- VueJS
+- Vue Router ( for navigation )
+- Vuex (Just basic setup, although didn't required in app)
+- Vuetify (Material CSS component for styling)
