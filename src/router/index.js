@@ -49,9 +49,10 @@ const routes = [
         name: 'people'
     },
     {
-        path: '/search/:query',
+        path: '/search',
         component: Search,
-        name: 'search'
+        name: 'search',
+        props: (route) => ({ query: route.query.q })
     }
 ]
 

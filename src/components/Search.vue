@@ -1,8 +1,11 @@
 <template>
     <div>
+        <span class="spinner" v-if="isLoading">
+            <v-progress-circular indeterminate color="purple"></v-progress-circular>
+        </span>
         <h2 class="title">
             All Results -
-            <router-link :to="{name: 'search', params: {query: $route.params.query }}">{{$route.params.query}}</router-link>
+            <router-link :to="{name: 'search', query: {q: $route.query.q }}">{{$route.query.q}}</router-link>
         </h2>
         <div id="trending">
             <span v-if="isLoading" class="spinner">
@@ -33,21 +36,31 @@
         };
       },
       mounted() {
-        this.$http
-          .get(
-            `https://api.themoviedb.org/3/search/movie?api_key=a702970c58dc70036d195f326f3f4c77&query=${
-              this.$route.params.query
-            }`
-          )
-          .then(res => {
-            this.search = res.data.results;
-            this.isLoading = false; // Loading indicator
-          });
+        this.searchQuery();
       },
       methods: {
         extractYear(date) {
           return date.split('-')[0];
         }
+      },
+      methods: {
+        searchQuery() {
+          this.$http
+            .get(
+              `https://api.themoviedb.org/3/search/movie?api_key=a702970c58dc70036d195f326f3f4c77&query=${
+                this.$route.query.q
+              }`
+            )
+            .then(res => {
+              this.search = res.data.results;
+              this.isLoading = false; // Loading indicator
+            });
+        }
+      },
+      beforeRouteUpdate(to, from, next) {
+        this.$route.query.q = to.query.q; // assigning the new query
+        this.searchQuery();
+        next();
       }
     };
 </script>

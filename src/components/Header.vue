@@ -36,7 +36,7 @@
       },
       methods: {
         searchQuery() {
-          this.$router.push(`/search/${this.search}`);
+          this.$router.push(`/search?q=${this.search}`);
           this.search = '';
         }
       }
